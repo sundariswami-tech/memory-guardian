@@ -1,0 +1,49 @@
+================================================================================
+MEMORY GUARDIAN - 3-MINUTE DEMO SCRIPT
+================================================================================
+
+[Visual: Show assets/cover_page_banner.png - Cybernetic shield protecting a brain]
+
+--- 1. THE HOOK (0:00 - 0:30) ---
+[Speaker Tone: Engaging, relatable, and direct]
+
+"How many browser tabs do you have open right now? How late did you stay up scrolling last night? 
+
+In our hyper-connected world, we monitor our servers, our databases, and our API latencies. But we ignore our most critical processor: our own brain. 
+
+Our modern digital habits—infinite scroll, sleep deprivation, and constant screen fatigue—are quietly driving attention fragmentation and cognitive decline. 
+
+Introducing Memory Guardian: a safety-first, multi-agent AI assistant designed to monitor digital lifestyle metrics and safeguard your long-term cognitive health."
+
+--- 2. PURPOSE & VALUE (0:30 - 1:00) ---
+"Memory Guardian doesn't just track data; it calculates a personalized Cognitive Risk Score and enforces rigid safety guardrails. Built on Google's ADK 2.0 framework and the Model Context Protocol (MCP), it is privacy-first, modular, and stateful."
+
+--- 3. ARCHITECTURE & MCP (1:00 - 1:45) ---
+[Visual: Show assets/architecture_diagram.png - Stateful multi-agent graph]
+
+"Let’s look under the hood. Memory Guardian uses a stateful directed graph workflow:
+First, a central ConciergeAgent orchestrates the execution. 
+It delegates telemetry-gathering tasks to three parallel sub-agents: the WebActivityAnalyzer, the ScreenTimeAgent, and the HealthRecoveryAgent.
+These sub-agents communicate with an isolated Model Context Protocol (MCP) server running FastMCP over stdio to fetch synthetic user telemetry. 
+Once metrics are gathered, our RiskScoringAgent calculates an overall Cognitive Risk Score. 
+By delegating tasks to dedicated sub-agents, we avoid prompt bloat and keep each component highly focused."
+
+--- 4. THE SECURITY CHECKPOINT & HITL (1:45 - 2:30) ---
+"But AI needs safety boundaries. Before any advice reaches the user, the workflow passes through a strict Security Checkpoint:
+1. PII Redaction: Any cognitive journals are scanned to automatically scrub emails, phone numbers, or SSNs.
+2. Prompt Injection Defense: It blocks command override attempts.
+3. Risk-Based Gating: 
+   - A score of 50 or less is Low Risk and auto-approves.
+   - A score between 50 and 70 is Medium Risk, which auto-approves but interrupts to request a custom detailed summary if requested.
+   - A score above 70 is High Risk. It halts execution and triggers a Human-in-the-Loop (HITL) gate using ADK’s stateful resumability. The system saves its state to disk, suspends, and waits for explicit user approval."
+
+--- 5. LIVE DEMO WALKTHROUGH (2:30 - 3:15) ---
+"Let's see the demo in action using the agents-cli playground.
+In our first scenario, the user sleeps 6.5 hours and has 4 hours of screen time. The scoring agent computes a Medium Risk score of 65. The security checkpoint passes automatically, and the Memory Guard Agent successfully delivers customized wellness recommendations.
+In our second scenario, the user has only 4 hours of sleep and high screen time. The Risk Score spikes to 90. 
+Watch as the terminal halts. The checkpoint suspends the execution and prompts: 'Checkpoint approval required.'
+Once the user submits a JSON payload approving the action, the ADK reloads the state from disk and safely resumes the workflow to deliver the finalized recommendations."
+
+--- 6. CLOSING (3:15 - 3:30) ---
+"Memory Guardian shows the power of ADK 2.0: combining stateful multi-agent workflows, isolated MCP tool integration, and deterministic safety checkpoints. It’s AI that looks out for your mind—without compromising your privacy. Thank you."
+================================================================================

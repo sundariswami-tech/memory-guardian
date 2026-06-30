@@ -1,5 +1,7 @@
 # Memory Guardian 🛡️
 
+![Memory Guardian Cover Banner](assets/cover_page_banner.png)
+
 Memory Guardian is a safety-first, multi-agent AI assistant designed to monitor and manage digital behavior to combat cognitive fatigue, mental fog, and long-term memory loss. Built on the **Google ADK 2.0 (Agent Development Kit)** and the **Model Context Protocol (MCP)**, Memory Guardian implements state-of-the-art telemetry aggregation, risk assessment, and rigid safety-oriented human-in-the-loop (HITL) checkpoints.
 
 ---
@@ -28,6 +30,8 @@ Without continuous tracking and proactive interventions, users remain unaware of
 ---
 
 ## 3. Architecture Diagram Description
+
+![Memory Guardian Architecture Diagram](assets/architecture_diagram.png)
 
 Below is a flowchart representing the workflow architecture of the Memory Guardian:
 

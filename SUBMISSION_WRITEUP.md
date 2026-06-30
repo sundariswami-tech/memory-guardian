@@ -1,5 +1,7 @@
 # Memory Guardian: Submission Writeup 🛡️
 
+![Memory Guardian Cover Banner](assets/cover_page_banner.png)
+
 Memory Guardian is a safety-first, multi-agent AI solution designed to monitor digital lifestyle metrics and safeguard users from cognitive decline, mental fatigue, and long-term memory loss. The project is implemented using the **Google Agent Development Kit (ADK 2.0)** and the **Model Context Protocol (MCP)**.
 
 ---
@@ -16,6 +18,8 @@ Memory Guardian bridges the gap between raw behavioral telemetry and actionable 
 
 ## 2. Architecture
 The Memory Guardian workflow is built as a stateful directed graph utilizing the ADK 2.0 `Workflow` API:
+
+![Memory Guardian Architecture Diagram](assets/architecture_diagram.png)
 
 1. **`data_router`**:
    Acts as a gateway. If telemetry data has not yet been collected (`data_gathered == False`), it routes the workflow to the `ConciergeAgent`. If telemetry is present, it routes to `memory_guard_agent`.
