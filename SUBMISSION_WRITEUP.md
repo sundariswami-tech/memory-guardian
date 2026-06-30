@@ -19,7 +19,7 @@ Memory Guardian bridges the gap between raw behavioral telemetry and actionable 
 ## 2. Architecture
 The Memory Guardian workflow is built as a stateful directed graph utilizing the ADK 2.0 `Workflow` API:
 
-![Memory Guardian Architecture Diagram](assets/architecture_diagram.png)
+![Memory Guardian Architecture](assets/architecture-diagram.png)
 
 1. **`data_router`**:
    Acts as a gateway. If telemetry data has not yet been collected (`data_gathered == False`), it routes the workflow to the `ConciergeAgent`. If telemetry is present, it routes to `memory_guard_agent`.

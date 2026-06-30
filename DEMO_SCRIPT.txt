@@ -19,7 +19,7 @@ Introducing Memory Guardian: a safety-first, multi-agent AI assistant designed t
 "Memory Guardian doesn't just track data; it calculates a personalized Cognitive Risk Score and enforces rigid safety guardrails. Built on Google's ADK 2.0 framework and the Model Context Protocol (MCP), it is privacy-first, modular, and stateful."
 
 --- 3. ARCHITECTURE & MCP (1:00 - 1:45) ---
-[Visual: Show assets/architecture_diagram.png - Stateful multi-agent graph]
+[Visual: Show assets/architecture-diagram.png - Stateful multi-agent graph]
 
 "Let’s look under the hood. Memory Guardian uses a stateful directed graph workflow:
 First, a central ConciergeAgent orchestrates the execution. 

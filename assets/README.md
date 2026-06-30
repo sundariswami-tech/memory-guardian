@@ -5,35 +5,24 @@ This directory contains the visual assets used in the Memory Guardian project do
 ---
 
 ## 1. Architecture Diagram
-* **File Path**: `assets/architecture_diagram.png`
+* **File Path**: `assets/architecture-diagram.png`
 * **Purpose**: Visualizes the multi-agent graph layout, context propagation, MCP tool isolation, and human-in-the-loop security gates.
 
 ### Visual Layout & Structure
-The diagram uses a top-down and branching layout flow to represent the sequential delegation and check-point stages:
-1. **Entry Point (START)**: A glowing capsule at the top that initiates the workflow.
-2. **Concierge Agent (Orchestrator)**: A central dominant node that coordinates task routing.
-3. **Telemetry Layer (Parallel Sub-Agents)**: Three parallel nodes branching out of the orchestrator via solid delegation paths:
-   * **WebActivityAnalyzer**
-   * **ScreenTimeAgent**
-   * **HealthRecoveryAgent**
-4. **Model Context Protocol (MCP) Server**: A distinct, isolated container representing the stdio toolset. Dashed bidirectional lines connect the sub-agents to the synthetic metrics tools inside the MCP container.
-5. **Synthesis Node (RiskScoringAgent)**: Receives the metrics from the three sub-agents, computes the final Cognitive Risk Score (0-100), and records it to the validated state.
-6. **Security Gate Checkpoint**: A diamond decision gate evaluating the risk score:
-   * **High Risk (>70)**: Leads to a strict HITL interrupt node (Requires Explicit Approval).
-   * **Medium Risk (>50)**: Leads to a warning HITL interrupt node (Soft Warning).
-   * **Low Risk (<=50)**: Leads to the auto-approved memory storage terminal node.
+The diagram uses a horizontal left-to-right layout to represent the sequential workflow:
+1. **Input Agents (Left)**: Grouped vertically are the three telemetry collectors: `Web Activity`, `Screen Time`, and `Health Recovery`. Below them, the `Model Context Protocol (MCP) Server` is clearly labeled and shown connected.
+2. **Concierge Orchestrator Agent (Center)**: The main central agent that orchestrates the workflow.
+3. **Risk Scoring & Security Checkpoint (Middle)**: The `Risk Scoring Agent` and the `Security Gate Checkpoint` process the aggregated telemetry at the core of the workflow.
+4. **Human-in-the-Loop Approval Gates (Right)**: Aligned vertically on the right, these gates represent the safety checks for `Low Risk`, `Medium Risk`, and `High Risk` classifications.
 
 ### Design Aesthetics & Colors
-* **Theme**: Modern developer dark mode.
-* **Background**: Deep obsidian/charcoal `#0d0e12` with subtle grid lines.
-* **Nodes**: Sleek semi-transparent glassmorphism panels with glowing borders:
-  * **Orchestrator & Sub-Agents**: Electric blue (`#3b82f6`) and violet (`#8b5cf6`) accents.
-  * **MCP Boundary**: Purple (`#8b5cf6`) dashed border.
-  * **Security Decisions**: Cyber green (`#10b981`) for low risk, orange/amber (`#f59e0b`) for medium risk, and crimson (`#ef4444`) for high risk.
-* **Typography**: Highly legible sans-serif (e.g., Outfit or Inter).
+* **Theme**: Modern developer dark mode with neon accents.
+* **Background**: Deep obsidian background with optimized contrast.
+* **Readability**: Reduced glow intensity and clean directional arrows pointing left-to-right to improve layout clarity and text hierarchy.
+* **MCP Label**: Clearly labeled as "Model Context Protocol (MCP) Server."
 
 ### Alt Text / Accessibility Description
-> "A dark-mode flowchart showing the Memory Guardian architecture. The flow starts at a START capsule and moves to the central Concierge Agent, which delegates to three parallel sub-agents: Web Activity Analyzer, Screen Time Agent, and Health Recovery Agent. The sub-agents fetch data from an isolated Model Context Protocol (MCP) server container. The results flow into the Risk Scoring Agent, which calculates a score and passes it to a security checkpoint decision gate. The gate routes to three outcomes depending on the score: Auto-Approved Storage (risk score 50 or below), Soft User Warning (risk score 51 to 70), and Require Explicit Approval (risk score over 70)."
+> "A dark-mode software architecture diagram for Memory Guardian flowing from left to right. On the left, a group of three input agents (Web Activity, Screen Time, and Health Recovery) are connected to the Model Context Protocol (MCP) Server. These flow into the central Concierge Orchestrator Agent. In the middle, the Risk Scoring Agent and Security Gate Checkpoint process the metrics. On the right, the Human-in-the-Loop Approval Gates are vertically aligned and clearly labeled for Low, Medium, and High Risk."
 
 ---
 

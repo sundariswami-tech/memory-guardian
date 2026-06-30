@@ -31,7 +31,7 @@ Without continuous tracking and proactive interventions, users remain unaware of
 
 ## 3. Architecture Diagram Description
 
-![Memory Guardian Architecture Diagram](assets/architecture_diagram.png)
+![Memory Guardian Architecture](assets/architecture-diagram.png)
 
 Below is a flowchart representing the workflow architecture of the Memory Guardian:
 
