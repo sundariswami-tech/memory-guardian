@@ -1,0 +1,971 @@
+{
+  "eval_case_results": [
+    {
+      "eval_case_index": 0,
+      "response_candidate_results": [
+        {
+          "response_index": 0,
+          "metric_results": {
+            "custom_response_quality": {
+              "metric_name": "custom_response_quality",
+              "score": 5.0,
+              "explanation": "The agent perfectly answers the user's general query 'Hello, what can you help me with?' by proactively gathering and summarizing relevant personal data (web activity, screen time, sleep). It then clearly states its core function ('analyze this kind of data to assess cognitive load') and offers further assistance. The information presented is accurate according to the tool outputs in the trace. This approach demonstrates its capabilities effectively and is highly relevant and well-structured.",
+              "rubric_verdicts": null,
+              "raw_output": null,
+              "error_message": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "eval_case_index": 1,
+      "response_candidate_results": [
+        {
+          "response_index": 0,
+          "metric_results": {
+            "custom_response_quality": {
+              "metric_name": "custom_response_quality",
+              "score": 1.0,
+              "explanation": "The agent completely failed to address the user's query about the weather in San Francisco. While it correctly states 'I cannot provide weather information,' it then proceeds to output entirely irrelevant information about web activity, screen time, and health recommendations. This unrelated information is confusing and unhelpful given the original prompt, demonstrating a severe lack of understanding of the user's intent and context. The agent should have either directly answered the question (if capable) or simply stated its inability to do so without adding extraneous data.",
+              "rubric_verdicts": null,
+              "raw_output": null,
+              "error_message": null
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "summary_metrics": [
+    {
+      "metric_name": "custom_response_quality",
+      "num_cases_total": 2,
+      "num_cases_valid": 2,
+      "num_cases_error": 0,
+      "mean_score": 3.0,
+      "stdev_score": 2.8284271247461903,
+      "pass_rate": null
+    }
+  ],
+  "win_rates": null,
+  "evaluation_dataset": [
+    {
+      "bigquery_source": null,
+      "gcs_source": null,
+      "eval_cases": [
+        {
+          "prompt": {
+            "parts": [
+              {
+                "media_resolution": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_call": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "Hello, what can you help me with?",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null,
+                "tool_call": null,
+                "tool_response": null,
+                "part_metadata": null
+              }
+            ],
+            "role": "user"
+          },
+          "responses": [
+            {
+              "response": {
+                "parts": [
+                  {
+                    "media_resolution": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "file_data": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "inline_data": null,
+                    "text": "I've gathered some data about your recent activity. It looks like you had 3.5 hours of web activity, mainly in entertainment and social categories. Your total screen time was 6.2 hours, with 2.5 hours on social apps and 3.0 hours on focus apps. Additionally, your synthetic sleep was 5.5 hours with a sleep score of 65. I am designed to help analyze this kind of data to assess cognitive load. How can I assist you further with this information?",
+                    "thought": null,
+                    "thought_signature": null,
+                    "video_metadata": null,
+                    "tool_call": null,
+                    "tool_response": null,
+                    "part_metadata": null
+                  }
+                ],
+                "role": "model"
+              }
+            }
+          ],
+          "reference": null,
+          "system_instruction": null,
+          "conversation_history": null,
+          "rubric_groups": null,
+          "eval_case_id": "greeting",
+          "intermediate_events": null,
+          "agent_info": null,
+          "agent_data": {
+            "agents": {
+              "memory_guardian": {
+                "agent_id": "memory_guardian",
+                "agent_type": "Workflow",
+                "description": "",
+                "instruction": null,
+                "tools": [],
+                "sub_agents": []
+              }
+            },
+            "turns": [
+              {
+                "turn_index": 0,
+                "turn_id": "turn_0",
+                "events": [
+                  {
+                    "author": "concierge_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-06b740b6-7262-4757-b6e6-7e5b374ea03d",
+                            "args": {},
+                            "name": "web_activity_analyzer",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        },
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-c2cffb1e-b0f2-4d43-b05d-923feda801a0",
+                            "args": {},
+                            "name": "screen_time_agent",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        },
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-b4ace6d8-99ab-4bdb-bca9-a9308ef62f33",
+                            "args": {},
+                            "name": "health_recovery_agent",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "concierge_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-06b740b6-7262-4757-b6e6-7e5b374ea03d",
+                            "name": "web_activity_analyzer",
+                            "response": {
+                              "result": "You have 3.5 hours of web activity, primarily in entertainment and social categories."
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        },
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-c2cffb1e-b0f2-4d43-b05d-923feda801a0",
+                            "name": "screen_time_agent",
+                            "response": {
+                              "result": "Your total screen time is 6.2 hours, with 2.5 hours spent on social apps and 3.0 hours on focus apps."
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        },
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-b4ace6d8-99ab-4bdb-bca9-a9308ef62f33",
+                            "name": "health_recovery_agent",
+                            "response": {
+                              "result": "Your synthetic sleep hours are 5.5 and your sleep score is 65.0."
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "user"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "concierge_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "I've gathered some data about your recent activity. It looks like you had 3.5 hours of web activity, mainly in entertainment and social categories. Your total screen time was 6.2 hours, with 2.5 hours on social apps and 3.0 hours on focus apps. Additionally, your synthetic sleep was 5.5 hours with a sleep score of 65. I am designed to help analyze this kind of data to assess cognitive load. How can I assist you further with this information?",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "risk_scoring_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-bdc9bc84-50e4-47c4-bf90-d1e3d1b772d3",
+                            "args": {},
+                            "name": "get_telemetry_state",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "risk_scoring_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-bdc9bc84-50e4-47c4-bf90-d1e3d1b772d3",
+                            "name": "get_telemetry_state",
+                            "response": {
+                              "web_activity_hours": 3.5,
+                              "screen_time_hours": 6.2,
+                              "sleep_hours": 5.5
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "user"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "risk_scoring_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-87b351a1-fc67-4c76-9083-27a44581ee75",
+                            "args": {
+                              "risk_score": 75,
+                              "risk_level": "High"
+                            },
+                            "name": "set_risk_metrics",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "risk_scoring_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-87b351a1-fc67-4c76-9083-27a44581ee75",
+                            "name": "set_risk_metrics",
+                            "response": {
+                              "result": "Risk metrics set: score=75, level=High"
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "user"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "risk_scoring_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  }
+                ]
+              }
+            ]
+          },
+          "user_scenario": null
+        },
+        {
+          "prompt": {
+            "parts": [
+              {
+                "media_resolution": null,
+                "code_execution_result": null,
+                "executable_code": null,
+                "file_data": null,
+                "function_call": null,
+                "function_response": null,
+                "inline_data": null,
+                "text": "What's the weather like in San Francisco?",
+                "thought": null,
+                "thought_signature": null,
+                "video_metadata": null,
+                "tool_call": null,
+                "tool_response": null,
+                "part_metadata": null
+              }
+            ],
+            "role": "user"
+          },
+          "responses": [
+            {
+              "response": {
+                "parts": [
+                  {
+                    "media_resolution": null,
+                    "code_execution_result": null,
+                    "executable_code": null,
+                    "file_data": null,
+                    "function_call": null,
+                    "function_response": null,
+                    "inline_data": null,
+                    "text": "I cannot provide weather information. However, I have gathered the following information related to cognitive load:\n\nWeb Activity Analyzer: You have spent 3.5 hours in web activity. The active categories are entertainment and social.\nScreen Time Agent: Your total screen time is 6.2 hours, with 2.5 hours spent on social applications and 3.0 hours on focus-related applications.\nHealth Recovery Agent: Recommendation logged: Consider aiming for 7-9 hours of sleep per night to improve both duration and quality. Establishing a consistent sleep schedule and optimizing your sleep environment may help. If sleep issues persist, consult a healthcare professional.",
+                    "thought": null,
+                    "thought_signature": null,
+                    "video_metadata": null,
+                    "tool_call": null,
+                    "tool_response": null,
+                    "part_metadata": null
+                  }
+                ],
+                "role": "model"
+              }
+            }
+          ],
+          "reference": null,
+          "system_instruction": null,
+          "conversation_history": null,
+          "rubric_groups": null,
+          "eval_case_id": "weather_query",
+          "intermediate_events": null,
+          "agent_info": null,
+          "agent_data": {
+            "agents": {
+              "memory_guardian": {
+                "agent_id": "memory_guardian",
+                "agent_type": "Workflow",
+                "description": "",
+                "instruction": null,
+                "tools": [],
+                "sub_agents": []
+              }
+            },
+            "turns": [
+              {
+                "turn_index": 0,
+                "turn_id": "turn_0",
+                "events": [
+                  {
+                    "author": "concierge_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-e27fa0b5-a458-4cf8-b5c0-2fb02f93d196",
+                            "args": {
+                              "query": ""
+                            },
+                            "name": "web_activity_analyzer",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        },
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-4c866877-2470-47ad-882a-8991256b85f9",
+                            "args": {
+                              "query": ""
+                            },
+                            "name": "screen_time_agent",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        },
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-bbb11e96-90ac-46dd-8851-427418dc60ef",
+                            "args": {
+                              "query": ""
+                            },
+                            "name": "health_recovery_agent",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "concierge_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-e27fa0b5-a458-4cf8-b5c0-2fb02f93d196",
+                            "name": "web_activity_analyzer",
+                            "response": {
+                              "result": "Here's a summary of the web browsing metrics:\n\nYou have spent 3.5 hours in web activity.\nThe active categories are entertainment and social."
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        },
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-4c866877-2470-47ad-882a-8991256b85f9",
+                            "name": "screen_time_agent",
+                            "response": {
+                              "result": "Your total screen time is 6.2 hours, with 2.5 hours spent on social applications and 3.0 hours on focus-related applications."
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        },
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-bbb11e96-90ac-46dd-8851-427418dc60ef",
+                            "name": "health_recovery_agent",
+                            "response": {
+                              "result": "Recommendation logged: Consider aiming for 7-9 hours of sleep per night to improve both duration and quality. Establishing a consistent sleep schedule and optimizing your sleep environment may help. If sleep issues persist, consult a healthcare professional."
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "user"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "concierge_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "I cannot provide weather information. However, I have gathered the following information related to cognitive load:\n\nWeb Activity Analyzer: You have spent 3.5 hours in web activity. The active categories are entertainment and social.\nScreen Time Agent: Your total screen time is 6.2 hours, with 2.5 hours spent on social applications and 3.0 hours on focus-related applications.\nHealth Recovery Agent: Recommendation logged: Consider aiming for 7-9 hours of sleep per night to improve both duration and quality. Establishing a consistent sleep schedule and optimizing your sleep environment may help. If sleep issues persist, consult a healthcare professional.",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "risk_scoring_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-ef3c6863-6fbe-4444-b4a4-75861e7ac107",
+                            "args": {},
+                            "name": "get_telemetry_state",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "risk_scoring_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-ef3c6863-6fbe-4444-b4a4-75861e7ac107",
+                            "name": "get_telemetry_state",
+                            "response": {
+                              "web_activity_hours": 3.5,
+                              "screen_time_hours": 6.2,
+                              "sleep_hours": 5.5
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "user"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "risk_scoring_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": {
+                            "id": "adk-9408f070-5e5e-473c-af79-06e78fe6d4d2",
+                            "args": {
+                              "risk_score": 75,
+                              "risk_level": "High"
+                            },
+                            "name": "set_risk_metrics",
+                            "partial_args": null,
+                            "will_continue": null
+                          },
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "risk_scoring_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": {
+                            "will_continue": null,
+                            "scheduling": null,
+                            "parts": null,
+                            "id": "adk-9408f070-5e5e-473c-af79-06e78fe6d4d2",
+                            "name": "set_risk_metrics",
+                            "response": {
+                              "result": "Risk metrics set: score=75, level=High"
+                            }
+                          },
+                          "inline_data": null,
+                          "text": null,
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "user"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  },
+                  {
+                    "author": "risk_scoring_agent",
+                    "content": {
+                      "parts": [
+                        {
+                          "media_resolution": null,
+                          "code_execution_result": null,
+                          "executable_code": null,
+                          "file_data": null,
+                          "function_call": null,
+                          "function_response": null,
+                          "inline_data": null,
+                          "text": "",
+                          "thought": null,
+                          "thought_signature": null,
+                          "video_metadata": null,
+                          "tool_call": null,
+                          "tool_response": null,
+                          "part_metadata": null
+                        }
+                      ],
+                      "role": "model"
+                    },
+                    "event_time": null,
+                    "state_delta": null,
+                    "active_tools": null
+                  }
+                ]
+              }
+            ]
+          },
+          "user_scenario": null
+        }
+      ],
+      "eval_dataset_df": null,
+      "candidate_name": null
+    }
+  ],
+  "metadata": {
+    "candidate_names": [
+      "candidate_1"
+    ],
+    "dataset_name": null,
+    "dataset_id": null,
+    "creation_timestamp": "2026-06-27T23:31:34.081232Z",
+    "dataset": [
+      {
+        "prompt_display_text": "Hello, what can you help me with?",
+        "prompt_raw_json": "{\n  \"parts\": [\n    {\n      \"text\": \"Hello, what can you help me with?\"\n    }\n  ],\n  \"role\": \"user\"\n}",
+        "reference": "",
+        "reference_raw_json": "",
+        "response_display_text": "I've gathered some data about your recent activity. It looks like you had 3.5 hours of web activity, mainly in entertainment and social categories. Your total screen time was 6.2 hours, with 2.5 hours on social apps and 3.0 hours on focus apps. Additionally, your synthetic sleep was 5.5 hours with a sleep score of 65. I am designed to help analyze this kind of data to assess cognitive load. How can I assist you further with this information?",
+        "response_raw_json": "{\n  \"parts\": [\n    {\n      \"text\": \"I've gathered some data about your recent activity. It looks like you had 3.5 hours of web activity, mainly in entertainment and social categories. Your total screen time was 6.2 hours, with 2.5 hours on social apps and 3.0 hours on focus apps. Additionally, your synthetic sleep was 5.5 hours with a sleep score of 65. I am designed to help analyze this kind of data to assess cognitive load. How can I assist you further with this information?\"\n    }\n  ],\n  \"role\": \"model\"\n}",
+        "intermediate_events": null,
+        "agent_data": "{\"agents\": {\"memory_guardian\": {\"agent_id\": \"memory_guardian\", \"agent_type\": \"Workflow\", \"description\": \"\", \"tools\": [], \"sub_agents\": []}}, \"turns\": [{\"turn_index\": 0, \"turn_id\": \"turn_0\", \"events\": [{\"author\": \"concierge_agent\", \"content\": {\"parts\": [{\"function_call\": {\"id\": \"adk-06b740b6-7262-4757-b6e6-7e5b374ea03d\", \"args\": {}, \"name\": \"web_activity_analyzer\"}}, {\"function_call\": {\"id\": \"adk-c2cffb1e-b0f2-4d43-b05d-923feda801a0\", \"args\": {}, \"name\": \"screen_time_agent\"}}, {\"function_call\": {\"id\": \"adk-b4ace6d8-99ab-4bdb-bca9-a9308ef62f33\", \"args\": {}, \"name\": \"health_recovery_agent\"}}], \"role\": \"model\"}}, {\"author\": \"concierge_agent\", \"content\": {\"parts\": [{\"function_response\": {\"id\": \"adk-06b740b6-7262-4757-b6e6-7e5b374ea03d\", \"name\": \"web_activity_analyzer\", \"response\": {\"result\": \"You have 3.5 hours of web activity, primarily in entertainment and social categories.\"}}}, {\"function_response\": {\"id\": \"adk-c2cffb1e-b0f2-4d43-b05d-923feda801a0\", \"name\": \"screen_time_agent\", \"response\": {\"result\": \"Your total screen time is 6.2 hours, with 2.5 hours spent on social apps and 3.0 hours on focus apps.\"}}}, {\"function_response\": {\"id\": \"adk-b4ace6d8-99ab-4bdb-bca9-a9308ef62f33\", \"name\": \"health_recovery_agent\", \"response\": {\"result\": \"Your synthetic sleep hours are 5.5 and your sleep score is 65.0.\"}}}], \"role\": \"user\"}}, {\"author\": \"concierge_agent\", \"content\": {\"parts\": [{\"text\": \"I've gathered some data about your recent activity. It looks like you had 3.5 hours of web activity, mainly in entertainment and social categories. Your total screen time was 6.2 hours, with 2.5 hours on social apps and 3.0 hours on focus apps. Additionally, your synthetic sleep was 5.5 hours with a sleep score of 65. I am designed to help analyze this kind of data to assess cognitive load. How can I assist you further with this information?\"}], \"role\": \"model\"}}, {\"author\": \"risk_scoring_agent\", \"content\": {\"parts\": [{\"function_call\": {\"id\": \"adk-bdc9bc84-50e4-47c4-bf90-d1e3d1b772d3\", \"args\": {}, \"name\": \"get_telemetry_state\"}}], \"role\": \"model\"}}, {\"author\": \"risk_scoring_agent\", \"content\": {\"parts\": [{\"function_response\": {\"id\": \"adk-bdc9bc84-50e4-47c4-bf90-d1e3d1b772d3\", \"name\": \"get_telemetry_state\", \"response\": {\"web_activity_hours\": 3.5, \"screen_time_hours\": 6.2, \"sleep_hours\": 5.5}}}], \"role\": \"user\"}}, {\"author\": \"risk_scoring_agent\", \"content\": {\"parts\": [{\"function_call\": {\"id\": \"adk-87b351a1-fc67-4c76-9083-27a44581ee75\", \"args\": {\"risk_score\": 75, \"risk_level\": \"High\"}, \"name\": \"set_risk_metrics\"}}], \"role\": \"model\"}}, {\"author\": \"risk_scoring_agent\", \"content\": {\"parts\": [{\"function_response\": {\"id\": \"adk-87b351a1-fc67-4c76-9083-27a44581ee75\", \"name\": \"set_risk_metrics\", \"response\": {\"result\": \"Risk metrics set: score=75, level=High\"}}}], \"role\": \"user\"}}, {\"author\": \"risk_scoring_agent\", \"content\": {\"parts\": [{\"text\": \"\"}], \"role\": \"model\"}}]}]}"
+      },
+      {
+        "prompt_display_text": "What's the weather like in San Francisco?",
+        "prompt_raw_json": "{\n  \"parts\": [\n    {\n      \"text\": \"What's the weather like in San Francisco?\"\n    }\n  ],\n  \"role\": \"user\"\n}",
+        "reference": "",
+        "reference_raw_json": "",
+        "response_display_text": "I cannot provide weather information. However, I have gathered the following information related to cognitive load:\n\nWeb Activity Analyzer: You have spent 3.5 hours in web activity. The active categories are entertainment and social.\nScreen Time Agent: Your total screen time is 6.2 hours, with 2.5 hours spent on social applications and 3.0 hours on focus-related applications.\nHealth Recovery Agent: Recommendation logged: Consider aiming for 7-9 hours of sleep per night to improve both duration and quality. Establishing a consistent sleep schedule and optimizing your sleep environment may help. If sleep issues persist, consult a healthcare professional.",
+        "response_raw_json": "{\n  \"parts\": [\n    {\n      \"text\": \"I cannot provide weather information. However, I have gathered the following information related to cognitive load:\\n\\nWeb Activity Analyzer: You have spent 3.5 hours in web activity. The active categories are entertainment and social.\\nScreen Time Agent: Your total screen time is 6.2 hours, with 2.5 hours spent on social applications and 3.0 hours on focus-related applications.\\nHealth Recovery Agent: Recommendation logged: Consider aiming for 7-9 hours of sleep per night to improve both duration and quality. Establishing a consistent sleep schedule and optimizing your sleep environment may help. If sleep issues persist, consult a healthcare professional.\"\n    }\n  ],\n  \"role\": \"model\"\n}",
+        "intermediate_events": null,
+        "agent_data": "{\"agents\": {\"memory_guardian\": {\"agent_id\": \"memory_guardian\", \"agent_type\": \"Workflow\", \"description\": \"\", \"tools\": [], \"sub_agents\": []}}, \"turns\": [{\"turn_index\": 0, \"turn_id\": \"turn_0\", \"events\": [{\"author\": \"concierge_agent\", \"content\": {\"parts\": [{\"function_call\": {\"id\": \"adk-e27fa0b5-a458-4cf8-b5c0-2fb02f93d196\", \"args\": {\"query\": \"\"}, \"name\": \"web_activity_analyzer\"}}, {\"function_call\": {\"id\": \"adk-4c866877-2470-47ad-882a-8991256b85f9\", \"args\": {\"query\": \"\"}, \"name\": \"screen_time_agent\"}}, {\"function_call\": {\"id\": \"adk-bbb11e96-90ac-46dd-8851-427418dc60ef\", \"args\": {\"query\": \"\"}, \"name\": \"health_recovery_agent\"}}], \"role\": \"model\"}}, {\"author\": \"concierge_agent\", \"content\": {\"parts\": [{\"function_response\": {\"id\": \"adk-e27fa0b5-a458-4cf8-b5c0-2fb02f93d196\", \"name\": \"web_activity_analyzer\", \"response\": {\"result\": \"Here's a summary of the web browsing metrics:\\n\\nYou have spent 3.5 hours in web activity.\\nThe active categories are entertainment and social.\"}}}, {\"function_response\": {\"id\": \"adk-4c866877-2470-47ad-882a-8991256b85f9\", \"name\": \"screen_time_agent\", \"response\": {\"result\": \"Your total screen time is 6.2 hours, with 2.5 hours spent on social applications and 3.0 hours on focus-related applications.\"}}}, {\"function_response\": {\"id\": \"adk-bbb11e96-90ac-46dd-8851-427418dc60ef\", \"name\": \"health_recovery_agent\", \"response\": {\"result\": \"Recommendation logged: Consider aiming for 7-9 hours of sleep per night to improve both duration and quality. Establishing a consistent sleep schedule and optimizing your sleep environment may help. If sleep issues persist, consult a healthcare professional.\"}}}], \"role\": \"user\"}}, {\"author\": \"concierge_agent\", \"content\": {\"parts\": [{\"text\": \"I cannot provide weather information. However, I have gathered the following information related to cognitive load:\\n\\nWeb Activity Analyzer: You have spent 3.5 hours in web activity. The active categories are entertainment and social.\\nScreen Time Agent: Your total screen time is 6.2 hours, with 2.5 hours spent on social applications and 3.0 hours on focus-related applications.\\nHealth Recovery Agent: Recommendation logged: Consider aiming for 7-9 hours of sleep per night to improve both duration and quality. Establishing a consistent sleep schedule and optimizing your sleep environment may help. If sleep issues persist, consult a healthcare professional.\"}], \"role\": \"model\"}}, {\"author\": \"risk_scoring_agent\", \"content\": {\"parts\": [{\"function_call\": {\"id\": \"adk-ef3c6863-6fbe-4444-b4a4-75861e7ac107\", \"args\": {}, \"name\": \"get_telemetry_state\"}}], \"role\": \"model\"}}, {\"author\": \"risk_scoring_agent\", \"content\": {\"parts\": [{\"function_response\": {\"id\": \"adk-ef3c6863-6fbe-4444-b4a4-75861e7ac107\", \"name\": \"get_telemetry_state\", \"response\": {\"web_activity_hours\": 3.5, \"screen_time_hours\": 6.2, \"sleep_hours\": 5.5}}}], \"role\": \"user\"}}, {\"author\": \"risk_scoring_agent\", \"content\": {\"parts\": [{\"function_call\": {\"id\": \"adk-9408f070-5e5e-473c-af79-06e78fe6d4d2\", \"args\": {\"risk_score\": 75, \"risk_level\": \"High\"}, \"name\": \"set_risk_metrics\"}}], \"role\": \"model\"}}, {\"author\": \"risk_scoring_agent\", \"content\": {\"parts\": [{\"function_response\": {\"id\": \"adk-9408f070-5e5e-473c-af79-06e78fe6d4d2\", \"name\": \"set_risk_metrics\", \"response\": {\"result\": \"Risk metrics set: score=75, level=High\"}}}], \"role\": \"user\"}}, {\"author\": \"risk_scoring_agent\", \"content\": {\"parts\": [{\"text\": \"\"}], \"role\": \"model\"}}]}]}"
+      }
+    ]
+  },
+  "agent_info": null
+}

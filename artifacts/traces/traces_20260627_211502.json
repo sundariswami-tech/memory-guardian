@@ -1,0 +1,370 @@
+{
+  "eval_cases": [
+    {
+      "prompt": {
+        "parts": [
+          {
+            "text": "Hello, what can you help me with?"
+          }
+        ],
+        "role": "user"
+      },
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "I can help you analyze your cognitive load by gathering information from your web activity, screen time, and health recovery metrics. I've just initiated the process to collect data from these areas. Once I have the information, I can provide insights.\n"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "greeting",
+      "agent_data": {
+        "agents": {
+          "memory_guardian": {
+            "agent_id": "memory_guardian",
+            "agent_type": "Workflow",
+            "description": "",
+            "tools": [],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "turn_0",
+            "events": [
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-abf0b048-01a0-48da-9fe0-1fe0dd5d4bd1",
+                        "args": {
+                          "query": null
+                        },
+                        "name": "web_activity_analyzer"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-d5465a04-87be-45ff-8a29-3501ab6323de",
+                        "args": {
+                          "query": null
+                        },
+                        "name": "screen_time_agent"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-76005ab0-8f1b-490a-9dc1-2eb2a19d4cf8",
+                        "args": {
+                          "query": null
+                        },
+                        "name": "health_recovery_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-abf0b048-01a0-48da-9fe0-1fe0dd5d4bd1",
+                        "name": "web_activity_analyzer",
+                        "response": {
+                          "result": "```json\n{\n  \"web_activity_hours\": 3.5,\n  \"active_categories\": [\n    \"entertainment\",\n    \"social\"\n  ]\n}\n```"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-d5465a04-87be-45ff-8a29-3501ab6323de",
+                        "name": "screen_time_agent",
+                        "response": {
+                          "result": "Screen time metrics:\nTotal screen time: 6.2 hours\nCategories:\nSocial: 2.5 hours\nFocus: 3.0 hours"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-76005ab0-8f1b-490a-9dc1-2eb2a19d4cf8",
+                        "name": "health_recovery_agent",
+                        "response": {
+                          "result": ""
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I can help you analyze your cognitive load by gathering information from your web activity, screen time, and health recovery metrics. I've just initiated the process to collect data from these areas. Once I have the information, I can provide insights.\n"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-51d35840-384e-4f21-8847-1f32f95c2d25",
+                        "args": {},
+                        "name": "get_telemetry_state"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-51d35840-384e-4f21-8847-1f32f95c2d25",
+                        "name": "get_telemetry_state",
+                        "response": {
+                          "web_activity_hours": 3.5,
+                          "screen_time_hours": 6.2,
+                          "sleep_hours": 5.5
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-50ba53a0-fc17-4e55-af9f-cc076c716e98",
+                        "args": {
+                          "risk_score": 75,
+                          "risk_level": "High"
+                        },
+                        "name": "set_risk_metrics"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-50ba53a0-fc17-4e55-af9f-cc076c716e98",
+                        "name": "set_risk_metrics",
+                        "response": {
+                          "result": "Risk metrics set: score=75, level=High"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": ""
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "prompt": {
+        "parts": [
+          {
+            "text": "What's the weather like in San Francisco?"
+          }
+        ],
+        "role": "user"
+      },
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "I cannot provide weather information. However, I have gathered the following telemetry data:\nWeb Activity Analysis: I have retrieved the synthetic web metrics. The web activity hours are 3.5, and the active categories are entertainment and social.\nScreen Time Analysis: The screen time data shows a total of 6.2 hours, with 2.5 hours spent on social activities and 3.0 hours on focus-related tasks.\nHealth Recovery Analysis: Sleep hours: 5.5, Sleep score: 65.0."
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "weather_query",
+      "agent_data": {
+        "agents": {
+          "memory_guardian": {
+            "agent_id": "memory_guardian",
+            "agent_type": "Workflow",
+            "description": "",
+            "tools": [],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "turn_0",
+            "events": [
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-37e30b7e-d321-48c6-84ac-f9684506ff66",
+                        "args": {},
+                        "name": "web_activity_analyzer"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-13c1e34e-5c9c-4add-ac6a-3b112af46cab",
+                        "args": {},
+                        "name": "screen_time_agent"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-f2f3aa55-5120-4222-b1f5-9ed99cce6f6d",
+                        "args": {},
+                        "name": "health_recovery_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-37e30b7e-d321-48c6-84ac-f9684506ff66",
+                        "name": "web_activity_analyzer",
+                        "response": {
+                          "result": "I have retrieved the synthetic web metrics. The web activity hours are 3.5, and the active categories are entertainment and social."
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-13c1e34e-5c9c-4add-ac6a-3b112af46cab",
+                        "name": "screen_time_agent",
+                        "response": {
+                          "result": "The screen time data shows a total of 6.2 hours, with 2.5 hours spent on social activities and 3.0 hours on focus-related tasks."
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-f2f3aa55-5120-4222-b1f5-9ed99cce6f6d",
+                        "name": "health_recovery_agent",
+                        "response": {
+                          "result": "Sleep hours: 5.5\nSleep score: 65.0"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I cannot provide weather information. However, I have gathered the following telemetry data:\nWeb Activity Analysis: I have retrieved the synthetic web metrics. The web activity hours are 3.5, and the active categories are entertainment and social.\nScreen Time Analysis: The screen time data shows a total of 6.2 hours, with 2.5 hours spent on social activities and 3.0 hours on focus-related tasks.\nHealth Recovery Analysis: Sleep hours: 5.5, Sleep score: 65.0."
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-e316b7c8-58a1-427e-9310-aa686aa2f3c8",
+                        "args": {
+                          "risk_score": 75,
+                          "risk_level": "High"
+                        },
+                        "name": "set_risk_metrics"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-e316b7c8-58a1-427e-9310-aa686aa2f3c8",
+                        "name": "set_risk_metrics",
+                        "response": {
+                          "result": "Risk metrics set: score=75, level=High"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": ""
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+{
+  "eval_cases": [
+    {
+      "prompt": {
+        "parts": [
+          {
+            "text": "Hello, what can you help me with?"
+          }
+        ],
+        "role": "user"
+      },
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "I've gathered some data about your recent activity. It appears you've spent 3.5 hours browsing, mainly on entertainment and social sites. Your sleep and recovery metrics show you're getting 5.5 hours of sleep with a score of 65.0, suggesting a high cognitive load due to insufficient sleep.\n\nI can help by analyzing these kinds of data to assess your cognitive load and provide insights. Is there anything specific you would like to know about your cognitive load, or would you like to explore ways to improve it based on this information?"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "greeting",
+      "agent_data": {
+        "agents": {
+          "memory_guardian": {
+            "agent_id": "memory_guardian",
+            "agent_type": "Workflow",
+            "description": "",
+            "tools": [],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "turn_0",
+            "events": [
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-22204eff-b2d7-4f84-8b77-6bc1198998aa",
+                        "args": {},
+                        "name": "web_activity_analyzer"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-9829da63-dc10-46c7-b378-c32f2422769e",
+                        "args": {},
+                        "name": "screen_time_agent"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-9d021088-cbc4-4b13-85db-173272a7d2f3",
+                        "args": {},
+                        "name": "health_recovery_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-22204eff-b2d7-4f84-8b77-6bc1198998aa",
+                        "name": "web_activity_analyzer",
+                        "response": {
+                          "result": "Based on your web activity, you've spent 3.5 hours browsing. Your active categories include entertainment and social."
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-9829da63-dc10-46c7-b378-c32f2422769e",
+                        "name": "screen_time_agent",
+                        "response": {
+                          "result": ""
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-9d021088-cbc4-4b13-85db-173272a7d2f3",
+                        "name": "health_recovery_agent",
+                        "response": {
+                          "result": "Your sleep and recovery metrics indicate that you are getting 5.5 hours of sleep, with a sleep score of 65.0. This suggests that you may be experiencing a high cognitive load due to insufficient and potentially poor quality sleep. Prioritizing more consistent and restful sleep could be beneficial."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I've gathered some data about your recent activity. It appears you've spent 3.5 hours browsing, mainly on entertainment and social sites. Your sleep and recovery metrics show you're getting 5.5 hours of sleep with a score of 65.0, suggesting a high cognitive load due to insufficient sleep.\n\nI can help by analyzing these kinds of data to assess your cognitive load and provide insights. Is there anything specific you would like to know about your cognitive load, or would you like to explore ways to improve it based on this information?"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-2e43b5d4-069f-4305-823f-01368e7a7bda",
+                        "args": {},
+                        "name": "get_telemetry_state"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-2e43b5d4-069f-4305-823f-01368e7a7bda",
+                        "name": "get_telemetry_state",
+                        "response": {
+                          "web_activity_hours": 3.5,
+                          "screen_time_hours": 6.2,
+                          "sleep_hours": 5.5
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-49cb99b5-adab-4a6e-b571-f900cdf75c8d",
+                        "args": {
+                          "risk_score": 75,
+                          "risk_level": "High"
+                        },
+                        "name": "set_risk_metrics"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-49cb99b5-adab-4a6e-b571-f900cdf75c8d",
+                        "name": "set_risk_metrics",
+                        "response": {
+                          "result": "Risk metrics set: score=75, level=High"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": ""
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "prompt": {
+        "parts": [
+          {
+            "text": "What's the weather like in San Francisco?"
+          }
+        ],
+        "role": "user"
+      },
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "I cannot provide weather information. However, I have gathered the following telemetry data:\n\nWeb Activity: The user has 3.5 hours of web activity, primarily in the \"entertainment\" and \"social\" categories.\nScreen Time: The user's screen time is 6.2 hours, with 2.5 hours spent on social apps and 3.0 hours on focus-related activities.\nHealth Recovery: The user's sleep score is 65 with 5.5 hours of sleep, which is below the recommended 7-9 hours. To improve sleep quality and duration, it is recommended to establish a regular sleep schedule, create a restful environment, and avoid caffeine and alcohol before bed."
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "weather_query",
+      "agent_data": {
+        "agents": {
+          "memory_guardian": {
+            "agent_id": "memory_guardian",
+            "agent_type": "Workflow",
+            "description": "",
+            "tools": [],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "turn_0",
+            "events": [
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-036c4090-fd9c-441f-ab9e-df00a138fee0",
+                        "args": {},
+                        "name": "web_activity_analyzer"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-b9289c19-b2db-48c0-97c4-a7db6e17345a",
+                        "args": {},
+                        "name": "screen_time_agent"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-3b06a7dd-c62d-4872-9e76-dba78640aeae",
+                        "args": {},
+                        "name": "health_recovery_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-036c4090-fd9c-441f-ab9e-df00a138fee0",
+                        "name": "web_activity_analyzer",
+                        "response": {
+                          "result": "The user has 3.5 hours of web activity, primarily in the \"entertainment\" and \"social\" categories."
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-b9289c19-b2db-48c0-97c4-a7db6e17345a",
+                        "name": "screen_time_agent",
+                        "response": {
+                          "result": "```json\n{\n  \"screen_time_hours\": 6.2,\n  \"categories\": {\n    \"social\": 2.5,\n    \"focus\": 3.0\n  }\n}\n```"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-3b06a7dd-c62d-4872-9e76-dba78640aeae",
+                        "name": "health_recovery_agent",
+                        "response": {
+                          "result": "Your sleep score is 65 with 5.5 hours of sleep. This is below the recommended 7-9 hours of sleep for adults. Consider establishing a regular sleep schedule, creating a restful environment, and avoiding caffeine and alcohol before bed to improve your sleep quality and duration."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I cannot provide weather information. However, I have gathered the following telemetry data:\n\nWeb Activity: The user has 3.5 hours of web activity, primarily in the \"entertainment\" and \"social\" categories.\nScreen Time: The user's screen time is 6.2 hours, with 2.5 hours spent on social apps and 3.0 hours on focus-related activities.\nHealth Recovery: The user's sleep score is 65 with 5.5 hours of sleep, which is below the recommended 7-9 hours. To improve sleep quality and duration, it is recommended to establish a regular sleep schedule, create a restful environment, and avoid caffeine and alcohol before bed."
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-89700e46-7e2a-4343-89cd-948ba04d8498",
+                        "args": {},
+                        "name": "get_telemetry_state"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-89700e46-7e2a-4343-89cd-948ba04d8498",
+                        "name": "get_telemetry_state",
+                        "response": {
+                          "web_activity_hours": 3.5,
+                          "screen_time_hours": 6.2,
+                          "sleep_hours": 5.5
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-a3c643c6-4548-4148-bcdc-160714c2479f",
+                        "args": {
+                          "risk_level": "High",
+                          "risk_score": 75
+                        },
+                        "name": "set_risk_metrics"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-a3c643c6-4548-4148-bcdc-160714c2479f",
+                        "name": "set_risk_metrics",
+                        "response": {
+                          "result": "Risk metrics set: score=75, level=High"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": ""
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

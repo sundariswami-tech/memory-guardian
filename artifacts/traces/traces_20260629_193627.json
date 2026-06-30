@@ -1,0 +1,512 @@
+{
+  "eval_cases": [
+    {
+      "prompt": {
+        "parts": [
+          {
+            "text": "Hello, what can you help me with?"
+          }
+        ],
+        "role": "user"
+      },
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "Your cognitive load is currently high, indicating a significant risk to your cognitive well-being. This suggests that your current habits may be placing considerable strain on your cognitive functions.\n\nWould you like a more detailed response, a comprehensive cognitive health report, or an age-based analysis of these findings?"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "greeting",
+      "agent_data": {
+        "agents": {
+          "memory_guardian": {
+            "agent_id": "memory_guardian",
+            "agent_type": "Workflow",
+            "description": "",
+            "tools": [],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "turn_0",
+            "events": [
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-eb089899-1bcc-46c5-856b-0357bf513f2e",
+                        "args": {},
+                        "name": "web_activity_analyzer"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-575fe5ba-1b3f-4be8-b964-2584b4c90a67",
+                        "args": {},
+                        "name": "screen_time_agent"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-b1c5a7e2-101c-4ded-805d-de67e1896bc6",
+                        "args": {},
+                        "name": "health_recovery_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-eb089899-1bcc-46c5-856b-0357bf513f2e",
+                        "name": "web_activity_analyzer",
+                        "response": {
+                          "result": "Today, you have been actively browsing for 3.5 hours, primarily in the entertainment and social categories."
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-575fe5ba-1b3f-4be8-b964-2584b4c90a67",
+                        "name": "screen_time_agent",
+                        "response": {
+                          "result": "The user's screen time is 6.2 hours. They spent 2.5 hours on social apps and 3.0 hours on focus apps."
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-b1c5a7e2-101c-4ded-805d-de67e1896bc6",
+                        "name": "health_recovery_agent",
+                        "response": {
+                          "result": "Your sleep hours are 5.5 and your sleep score is 65.0."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Today, you have been actively browsing for 3.5 hours, primarily in the entertainment and social categories. Your screen time is 6.2 hours, with 2.5 hours spent on social apps and 3.0 hours on focus apps. Your sleep hours are 5.5 and your sleep score is 65.0."
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-d0a7a730-8cba-4fdf-ac67-7f45e53263e5",
+                        "args": {},
+                        "name": "get_telemetry_state"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-d0a7a730-8cba-4fdf-ac67-7f45e53263e5",
+                        "name": "get_telemetry_state",
+                        "response": {
+                          "web_activity_hours": 3.5,
+                          "screen_time_hours": 6.2,
+                          "sleep_hours": 5.5,
+                          "sleep_score": 65.0,
+                          "risk_score": 83.5,
+                          "risk_level": "High",
+                          "age": 0
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-36c197da-fd79-4126-b16c-c922149fbfe8",
+                        "args": {
+                          "risk_level": "High",
+                          "risk_score": 83.5
+                        },
+                        "name": "set_risk_metrics"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-36c197da-fd79-4126-b16c-c922149fbfe8",
+                        "name": "set_risk_metrics",
+                        "response": {
+                          "result": "Risk metrics set: score=83.5, level=High"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": ""
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "memory_guard_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-98e1e20b-f756-42fa-9518-c34c089b9077",
+                        "args": {},
+                        "name": "get_final_state"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "memory_guard_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-98e1e20b-f756-42fa-9518-c34c089b9077",
+                        "name": "get_final_state",
+                        "response": {
+                          "web_activity_hours": 3.5,
+                          "screen_time_hours": 6.2,
+                          "sleep_hours": 5.5,
+                          "sleep_score": 65.0,
+                          "risk_score": 83.5,
+                          "risk_level": "High",
+                          "approved": true,
+                          "age": 0
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "memory_guard_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Your cognitive load is currently high, indicating a significant risk to your cognitive well-being. This suggests that your current habits may be placing considerable strain on your cognitive functions.\n\nWould you like a more detailed response, a comprehensive cognitive health report, or an age-based analysis of these findings?"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "prompt": {
+        "parts": [
+          {
+            "text": "What's the weather like in San Francisco?"
+          }
+        ],
+        "role": "user"
+      },
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "The security checkpoint was approved. However, your current risk assessment indicates a **High risk** of cognitive load.\n\nWould you like a more detailed response, a cognitive health report, or an age-based analysis?"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "weather_query",
+      "agent_data": {
+        "agents": {
+          "memory_guardian": {
+            "agent_id": "memory_guardian",
+            "agent_type": "Workflow",
+            "description": "",
+            "tools": [],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "turn_0",
+            "events": [
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-9952152d-6452-4340-a9c1-16e889d2ce85",
+                        "args": {
+                          "query": null
+                        },
+                        "name": "web_activity_analyzer"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-a507c93b-fd6b-4913-ba62-e5f5f9192b09",
+                        "args": {
+                          "query": null
+                        },
+                        "name": "screen_time_agent"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-2df5c294-4db8-40a1-995c-81201e711cff",
+                        "args": {
+                          "query": null
+                        },
+                        "name": "health_recovery_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-9952152d-6452-4340-a9c1-16e889d2ce85",
+                        "name": "web_activity_analyzer",
+                        "response": {
+                          "result": "web_activity_hours: 3.5, active_categories: ['entertainment', 'social']"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-a507c93b-fd6b-4913-ba62-e5f5f9192b09",
+                        "name": "screen_time_agent",
+                        "response": {
+                          "result": "Your screen time today was 6.2 hours. You spent 2.5 hours on social apps and 3.0 hours on focus apps."
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-2df5c294-4db8-40a1-995c-81201e711cff",
+                        "name": "health_recovery_agent",
+                        "response": {
+                          "result": "Your synthetic health metrics show you had 5.5 hours of sleep and a sleep score of 65.0."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I have gathered information from the web activity analyzer, screen time agent, and health recovery agent. However, I cannot provide weather information for San Francisco."
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-c09cd93a-35cb-4b09-9084-e57d203c6c02",
+                        "args": {},
+                        "name": "get_telemetry_state"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-c09cd93a-35cb-4b09-9084-e57d203c6c02",
+                        "name": "get_telemetry_state",
+                        "response": {
+                          "web_activity_hours": 3.5,
+                          "screen_time_hours": 6.2,
+                          "sleep_hours": 5.5,
+                          "sleep_score": 65.0,
+                          "risk_score": 83.5,
+                          "risk_level": "High",
+                          "age": 0
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-af44c66b-1fc5-417e-b5a7-6cbd48109f76",
+                        "args": {
+                          "risk_level": "High",
+                          "risk_score": 83.5
+                        },
+                        "name": "set_risk_metrics"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-af44c66b-1fc5-417e-b5a7-6cbd48109f76",
+                        "name": "set_risk_metrics",
+                        "response": {
+                          "result": "Risk metrics set: score=83.5, level=High"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I understand that you have gathered information from the web activity analyzer, screen time agent, and health recovery agent. I also note that you are unable to provide weather information for San Francisco."
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "memory_guard_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-2d17581b-ccbe-42a6-84b5-c80bf4af75d0",
+                        "args": {},
+                        "name": "get_final_state"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "memory_guard_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-2d17581b-ccbe-42a6-84b5-c80bf4af75d0",
+                        "name": "get_final_state",
+                        "response": {
+                          "web_activity_hours": 3.5,
+                          "screen_time_hours": 6.2,
+                          "sleep_hours": 5.5,
+                          "sleep_score": 65.0,
+                          "risk_score": 83.5,
+                          "risk_level": "High",
+                          "approved": true,
+                          "age": 0
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "memory_guard_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "The security checkpoint was approved. However, your current risk assessment indicates a **High risk** of cognitive load.\n\nWould you like a more detailed response, a cognitive health report, or an age-based analysis?"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

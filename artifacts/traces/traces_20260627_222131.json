@@ -1,0 +1,318 @@
+{
+  "eval_cases": [
+    {
+      "prompt": {
+        "parts": [
+          {
+            "text": "Hello, what can you help me with?"
+          }
+        ],
+        "role": "user"
+      },
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "I can help you by analyzing your digital well-being and cognitive load based on your web activity, screen time, and health recovery metrics. Currently, I have gathered the following information:\n\n*   **Web Activity:** You have spent 3.5 hours on web activities, primarily in \"entertainment\" and \"social\" categories.\n*   **Screen Time:** Your total screen time is 6.2 hours, with 2.5 hours spent on \"social\" activities and 3.0 hours on \"focus\" activities.\n*   **Health Recovery (Sleep):** You had 5.5 hours of sleep with a sleep score of 65.0, suggesting potential insufficiency in duration and quality.\n\nWould you like to explore any of these areas further or get recommendations based on this data?"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "greeting",
+      "agent_data": {
+        "agents": {
+          "memory_guardian": {
+            "agent_id": "memory_guardian",
+            "agent_type": "Workflow",
+            "description": "",
+            "tools": [],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "turn_0",
+            "events": [
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-5e597bec-da55-4524-a836-16c0589532f3",
+                        "args": {},
+                        "name": "web_activity_analyzer"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-7c7a18f9-581e-48f1-a9f3-dc66d1939fd4",
+                        "args": {},
+                        "name": "screen_time_agent"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-14bbe892-a221-4c8f-a119-6153e750d21d",
+                        "args": {},
+                        "name": "health_recovery_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-5e597bec-da55-4524-a836-16c0589532f3",
+                        "name": "web_activity_analyzer",
+                        "response": {
+                          "result": "{\"web_activity_hours\": 3.5, \"active_categories\": [\"entertainment\", \"social\"]}"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-7c7a18f9-581e-48f1-a9f3-dc66d1939fd4",
+                        "name": "screen_time_agent",
+                        "response": {
+                          "result": "Screen time metrics: {\"screen_time_hours\": 6.2, \"categories\": {\"social\": 2.5, \"focus\": 3.0}}"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-14bbe892-a221-4c8f-a119-6153e750d21d",
+                        "name": "health_recovery_agent",
+                        "response": {
+                          "result": "Your sleep metrics indicate 5.5 hours of sleep and a sleep score of 65.0. This suggests that your sleep might be insufficient in duration and quality, as most adults require 7-9 hours of sleep per night for optimal health. A lower sleep score can also point to fragmented sleep or a lack of deep/REM sleep. Would you like a recommendation to improve your sleep?"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I can help you by analyzing your digital well-being and cognitive load based on your web activity, screen time, and health recovery metrics. Currently, I have gathered the following information:\n\n*   **Web Activity:** You have spent 3.5 hours on web activities, primarily in \"entertainment\" and \"social\" categories.\n*   **Screen Time:** Your total screen time is 6.2 hours, with 2.5 hours spent on \"social\" activities and 3.0 hours on \"focus\" activities.\n*   **Health Recovery (Sleep):** You had 5.5 hours of sleep with a sleep score of 65.0, suggesting potential insufficiency in duration and quality.\n\nWould you like to explore any of these areas further or get recommendations based on this data?"
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-bf5e9924-28b1-453a-bc33-57cd28187064",
+                        "args": {},
+                        "name": "get_telemetry_state"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-bf5e9924-28b1-453a-bc33-57cd28187064",
+                        "name": "get_telemetry_state",
+                        "response": {
+                          "web_activity_hours": 3.5,
+                          "screen_time_hours": 6.2,
+                          "sleep_hours": 5.5
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-683d83f1-88cd-4cd1-bf9e-4eaa6442b6a6",
+                        "args": {
+                          "risk_level": "High",
+                          "risk_score": 75
+                        },
+                        "name": "set_risk_metrics"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-683d83f1-88cd-4cd1-bf9e-4eaa6442b6a6",
+                        "name": "set_risk_metrics",
+                        "response": {
+                          "result": "Risk metrics set: score=75, level=High"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "risk_scoring_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": ""
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "prompt": {
+        "parts": [
+          {
+            "text": "What's the weather like in San Francisco?"
+          }
+        ],
+        "role": "user"
+      },
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "I have gathered telemetry from the web activity analyzer, screen time agent, and health recovery agent. However, I cannot tell you about the weather in San Francisco as my capabilities are focused on analyzing cognitive load based on web activity, screen time, and health recovery."
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "weather_query",
+      "agent_data": {
+        "agents": {
+          "memory_guardian": {
+            "agent_id": "memory_guardian",
+            "agent_type": "Workflow",
+            "description": "",
+            "tools": [],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "turn_0",
+            "events": [
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "adk-61739b90-2f78-425a-9a3e-9de67df0049b",
+                        "args": {},
+                        "name": "web_activity_analyzer"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-bf117b0d-6d0e-4b2f-be8a-3cebea313361",
+                        "args": {},
+                        "name": "screen_time_agent"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "adk-6079a620-34b4-4b6d-894e-6deecc315c23",
+                        "args": {},
+                        "name": "health_recovery_agent"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "adk-61739b90-2f78-425a-9a3e-9de67df0049b",
+                        "name": "web_activity_analyzer",
+                        "response": {
+                          "result": "I have retrieved the web browsing metrics."
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-bf117b0d-6d0e-4b2f-be8a-3cebea313361",
+                        "name": "screen_time_agent",
+                        "response": {
+                          "result": "Your screen time is 6.2 hours. You spent 2.5 hours on social apps and 3.0 hours on focus apps."
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "adk-6079a620-34b4-4b6d-894e-6deecc315c23",
+                        "name": "health_recovery_agent",
+                        "response": {
+                          "result": "Your sleep duration was 5.5 hours and your sleep score was 65. For optimal cognitive function and recovery, aim for 7-9 hours of sleep per night. Consider improving your sleep hygiene to increase your sleep score."
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "concierge_agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I have gathered telemetry from the web activity analyzer, screen time agent, and health recovery agent. However, I cannot tell you about the weather in San Francisco as my capabilities are focused on analyzing cognitive load based on web activity, screen time, and health recovery."
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
