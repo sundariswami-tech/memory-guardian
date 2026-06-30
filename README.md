@@ -106,11 +106,7 @@ uv pip install -e .
 
 ### 3. Environment Configuration
 Create a `.env` file in the root directory (based on the provided `.env`) and configure credentials:
-```ini
-GOOGLE_CLOUD_PROJECT=cognitive-health-capstone
-GOOGLE_CLOUD_LOCATION=global
-GOOGLE_GENAI_USE_VERTEXAI=True
-```
+
 Ensure you have authenticated with Google Cloud Platform:
 ```bash
 gcloud auth login
