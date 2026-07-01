@@ -38,10 +38,35 @@ Memory Guardian's intelligence is organized as a stateful, directed acyclic grap
    * **Domain Constraint Enforcement**: Asserts that metrics are non-negative and user age falls within $0 - 120$ bounds.
    * **Stateful Risk Gating**: Evaluates the computed `risk_score` against predefined safety thresholds.
 5. **Final Recommendation (`memory_guard_agent`)**: Generates localized, actionable wellness insights based on the telemetry and risk assessment without accessing raw external tools.
+---
+
+## 3. Memory Guardian Workflow Graph
+
+The stateful directed acyclic graph (DAG) of the Memory Guardian is rendered in the local ADK Playground environment as shown below:
+
+![Memory Guardian Playground Workflow Graph](assets/playground-workflow-graph.png)
+
+### Nodes
+* **`START`**: The entry point of the workflow graph that transitions to the `data_router`.
+* **`data_router`**: A conditional routing node that decides the execution path based on the `data_gathered` state variable.
+* **`ConciergeAgent`**: The telemetry orchestration agent that delegates to the upstream collectors using specialized tools.
+* **`security_checkpoint`**: A programmatic validator node that enforces domain constraints, scrubs PII, scans for prompt injections, and checks the safety threshold.
+* **`mark_data_gathered`**: A helper state-mutation node that marks the telemetry data collection phase as complete.
+* **`memory_guard_agent`**: The final report agent that compiles the cognitive health summary and personalized tiered recommendations.
+* **`END`**: The termination point of the workflow execution.
+
+### Edges & Transitions
+* **`START` -> `data_router`**: Initial transition to choose the execution path.
+* **`data_router` -> `ConciergeAgent`**: Followed when `data_gathered` is `False` (initial telemetry collection).
+* **`data_router` -> `memory_guard_agent`**: Followed when `data_gathered` is `True` (telemetry is successfully gathered and validated).
+* **`ConciergeAgent` -> `security_checkpoint`**: Routes to the security and approval validation logic immediately after telemetry aggregation and risk scoring.
+* **`security_checkpoint` -> `mark_data_gathered`**: Executes once security checks pass and risk scoring is approved (either auto-approved or approved via HITL checkpoint).
+* **`mark_data_gathered` -> `data_router`**: Loops back to the data router to guide the workflow to the final memory guardian agent report.
+* **`memory_guard_agent` -> `END`**: The workflow halts after outputting the memory guardian health advice.
 
 ---
 
-## 3. Key System Features
+## 4. Key System Features
 
 * **Multi-Agent Separation of Concerns**: Isolates telemetry gathering from final summary generation, preventing prompt bloat and ensuring LLM compliance.
 * **Model Context Protocol (MCP) Integration**: Leverages `StdioConnectionParams` to establish secure, local tool integrations with a synthetic `TelemetryServer` written via `FastMCP`.
@@ -51,7 +76,7 @@ Memory Guardian's intelligence is organized as a stateful, directed acyclic grap
 
 ---
 
-## 4. Human-In-The-Loop (HITL) & Resumability Flow
+## 5. Human-In-The-Loop (HITL) & Resumability Flow
 
 The human-in-the-loop mechanism operates as a strict security barrier when the overall cognitive risk is computed to be high. It prevents automatic generation of summaries, forcing human validation.
 
@@ -93,7 +118,7 @@ When a `RequestInput` exception is thrown, the workflow runner halts execution a
 
 ---
 
-## 5. Risk Scoring Logic & Thresholds
+## 6. Risk Scoring Logic & Thresholds
 
 Memory Guardian implements a standardized scoring system that penalizes poor sleep hygiene and high screen/web activity. The formula is defined as:
 
@@ -110,7 +135,21 @@ $$\text{Risk Score} = \max(0.0, \min(100.0, \text{Risk Score}))$$
 
 ---
 
-## 6. End-to-End Demo Walkthrough
+## 7. Personalized Cognitive Insights
+
+The `memory_guard_agent` provides customized cognitive advice based on the user's telemetry and risk assessment:
+* **Custom Insights**:
+  * **Sleep Score**: If the sleep quality score is low, the agent highlights the risk of **glymphatic waste clearance disruption** (preventing clearance of beta-amyloid plaques).
+  * **Web Activity**: If active web browsing duration is high, the agent notes **attention fragmentation** (draining cognitive load).
+  * **Screen Time**: If total active screen time is high, the agent highlights **cognitive fatigue** and mental fatigue risks.
+* **Tiered Actionable Tips**:
+  * **High Risk (Risk Score $> 70$)**: 4 to 6 strong interventions (e.g. strict screen cutoffs, immediate rest cycles).
+  * **Medium Risk ($50 < \text{Risk Score} \le 70$)**: 3 to 4 moderate tips (e.g. screen-free breaks, mindfulness intervals).
+  * **Low Risk (Risk Score $\le 50$)**: 2 to 3 maintenance tips (e.g. keeping existing boundaries, hydration).
+
+---
+
+## 8. End-to-End Demo Walkthrough
 
 A standard workflow execution cycle runs as follows:
 1. **Telemetry Request**: The user queries: *"Assess my cognitive health and provide recommendations."*
@@ -126,7 +165,7 @@ A standard workflow execution cycle runs as follows:
 
 ---
 
-## 7. Setup & Installation
+## 9. Setup & Installation
 
 ### 1. Prerequisites
 * Python 3.11+
@@ -157,7 +196,7 @@ gcloud config set project <your-gcp-project-id>
 
 ---
 
-## 8. Run Instructions
+## 10. Run Instructions
 
 ### 1. Interactive Playground
 To test the stateful multi-agent workflow in an interactive, step-by-step console, execute:
@@ -180,7 +219,7 @@ uv run python -m app.mcp_server
 
 ---
 
-## 9. Refined Synthetic Test Cases
+## 11. Refined Synthetic Test Cases
 
 Below are the detailed, step-by-step synthetic test cases representing different risk and security scenarios.
 
