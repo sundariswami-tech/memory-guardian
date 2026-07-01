@@ -4,25 +4,29 @@ This directory contains the visual assets used in the Memory Guardian project do
 
 ---
 
-## 1. Architecture Diagram
-* **File Path**: `assets/architecture-diagram.png`
-* **Purpose**: Visualizes the multi-agent graph layout, context propagation, MCP tool isolation, and human-in-the-loop security gates.
+## 1. Color-Coded Architecture Diagram
+* **File Path**: `assets/architecture-diagram-color.png`
+* **Purpose**: Visualizes the multi-agent graph layout, context propagation, MCP tool isolation, and human-in-the-loop security gates with risk-based color-coding.
 
 ### Visual Layout & Structure
 The diagram uses a horizontal left-to-right layout to represent the sequential workflow:
-1. **Input Agents (Left)**: Grouped vertically are the three telemetry collectors: `Web Activity`, `Screen Time`, and `Health Recovery`. Below them, the `Model Context Protocol (MCP) Server` is clearly labeled and shown connected.
-2. **Concierge Orchestrator Agent (Center)**: The main central agent that orchestrates the workflow.
-3. **Risk Scoring & Security Checkpoint (Middle)**: The `Risk Scoring Agent` and the `Security Gate Checkpoint` process the aggregated telemetry at the core of the workflow.
-4. **Human-in-the-Loop Approval Gates (Right)**: Aligned vertically on the right, these gates represent the safety checks for `Low Risk`, `Medium Risk`, and `High Risk` classifications.
+1. **Input Agents (Left)**: Grouped vertically are the three telemetry collectors: `Web Activity`, `Screen Time`, and `Health Recovery` along with the `Model Context Protocol (MCP) Server`. They are represented as blue (#4DA3FF) rectangles.
+2. **Concierge Orchestrator Agent (Center)**: The central hub agent that coordinates telemetry collection. Represented as a cyan (#00FFFF) circle.
+3. **Risk Scoring & Security Checkpoint (Middle-Right)**: The `Risk Scoring Agent` and `Security Gate Checkpoint` process metrics. Represented as purple (#A66BFF) rectangles.
+4. **Human-in-the-Loop Approval Gates (Right)**: Aligned vertically on the right, representing the safety gates:
+   * **Low Risk** gate (green, #00CC66, rounded rectangle)
+   * **Medium Risk** gate (orange, #FF9933, rounded rectangle)
+   * **High Risk** gate (red, #FF3333, rounded rectangle)
 
 ### Design Aesthetics & Colors
-* **Theme**: Modern developer dark mode with neon accents.
-* **Background**: Deep obsidian background with optimized contrast.
-* **Readability**: Reduced glow intensity and clean directional arrows pointing left-to-right to improve layout clarity and text hierarchy.
-* **MCP Label**: Clearly labeled as "Model Context Protocol (MCP) Server."
+* **Theme**: Modern developer dark mode with minimal glow.
+* **Title**: "Memory Guardian Architecture — Color-Coded Risk Flow"
+* **Arrow Labels**: Annotated with "data flow", "risk evaluation", and "approval decision" to guide the viewer through the telemetry-to-decision pipeline.
+* **Legend**: Mapped shape to role: Agents (rectangles), Orchestrator (circle), Gates (rounded rectangles).
 
 ### Alt Text / Accessibility Description
-> "A dark-mode software architecture diagram for Memory Guardian flowing from left to right. On the left, a group of three input agents (Web Activity, Screen Time, and Health Recovery) are connected to the Model Context Protocol (MCP) Server. These flow into the central Concierge Orchestrator Agent. In the middle, the Risk Scoring Agent and Security Gate Checkpoint process the metrics. On the right, the Human-in-the-Loop Approval Gates are vertically aligned and clearly labeled for Low, Medium, and High Risk."
+> "A color-coded software architecture diagram for Memory Guardian flowing from left to right on a deep black background. On the left, Input Agents and the MCP Server are colored blue (#4DA3FF). They connect to the central Concierge Orchestrator, represented as a cyan (#00FFFF) circle. The data flows into the Risk Scoring and Security Checkpoint (purple rectangles, #A66BFF). From there, the evaluation branches into Low Risk (green, #00CC66), Medium Risk (orange, #FF9933), or High Risk (red, #FF3333) human-in-the-loop gates."
+
 
 ---
 

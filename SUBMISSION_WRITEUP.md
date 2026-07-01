@@ -19,7 +19,7 @@ Memory Guardian bridges the gap between raw behavioral telemetry and actionable 
 ## 2. Architecture
 The Memory Guardian workflow is built as a stateful directed graph utilizing the ADK 2.0 `Workflow` API:
 
-![Memory Guardian Architecture](assets/architecture-diagram.png)
+![Memory Guardian Architecture — Color-Coded Risk Flow](assets/architecture-diagram-color.png)
 
 1. **`data_router`**:
    Acts as a gateway. If telemetry data has not yet been collected (`data_gathered == False`), it routes the workflow to the `ConciergeAgent`. If telemetry is present, it routes to `memory_guard_agent`.
@@ -157,8 +157,26 @@ The `data_router` now directs the workflow to the `memory_guard_agent`, which ge
 
 ---
 
-## 8. Value
-* **Actionable Wellness Insights**: Translates raw digital metrics into clear risk scores, helping users recognize high-stress patterns.
-* **Privacy-First AI**: Scrubs PII before processing and runs fully local or secure cloud validations, ensuring user data safety.
-* **Robust Orchestration**: By separating telemetry collectors from risk calculation and final summaries, the architecture avoids prompt bloat and guarantees deterministic safety checks.
-* **Fault-Tolerant Resumability**: Enables stateful interrupts that allow long-term monitoring apps to sleep and wake up based on user confirmation.
+## 8. Conclusion, Future Directions & Scalability
+
+### 8.1 Executive Summary & Synthesis
+In an era dominated by hyper-connectivity and endless digital consumption, cognitive health faces systemic risks from attention fragmentation and sleep deprivation. Memory Guardian bridges the critical gap between passive device logging and actionable cognitive wellness. By implementing a stateful, multi-agent orchestrator utilizing Google's ADK 2.0 and the Model Context Protocol (MCP), the system translates raw behavioral and sleep telemetry into a unified, mathematically rigorous risk score.
+
+### 8.2 Architectural Innovation & Gated Human Safety
+At its core, Memory Guardian proves that AI-driven wellness can be both highly intelligent and exceptionally secure:
+* **Orchestrator Tool Delegation**: Using `AgentTool` definitions, `ConciergeAgent` orchestrates telemetry gathering across three isolated specialized agents. This separation prevents prompt bloat and keeps execution modular.
+* **Safety-First Checkpoints**: The custom `security_checkpoint` node acts as a hard boundary. By performing regex-based PII scrubbing and keyword-based prompt injection detection, it ensures that sensitive data is sanitized before reaching downstream language models.
+* **Stateful Gating**: The human-in-the-loop (HITL) gate uses ADK’s stateful resumability. High-risk telemetry suspends execution, serializes state to disk, and requires explicit user confirmation via a structured JSON schema, ensuring that automated agents do not generate conclusions or make decisions without strict oversight.
+
+### 8.3 Synthetic Demo Relevance & Validation
+In healthcare and cognitive monitoring applications, testing with live patient telemetry presents severe compliance and privacy risks. The synthetic demo and test suite developed for Memory Guardian prove the architectural reliability and threshold boundaries of the system under zero-risk conditions. By simulating realistic metrics (such as sleep deprivation and high-stress browsing habits), we validate:
+1. Deterministic calculation of risk scores under varying lifestyle parameters.
+2. Graceful state suspension and disk serialization during High Risk alerts.
+3. Rapid, exception-based blocking of malicious inputs (prompt injections) without compromising the backend application structure.
+
+### 8.4 Future Work & Scalability Roadmap
+To scale Memory Guardian into a production-grade wellness platform, several future enhancements are planned:
+1. **Production Device Integrations**: Bridge the MCP server with actual consumer wearable and operating system APIs, such as Apple HealthKit, Android Health Connect, and Google Fit, to stream real-time physiological metrics (heart rate variability, deep sleep duration, circadian disruption).
+2. **Dynamic Personalized Thresholds**: Replace the hardcoded risk formula with a lightweight machine learning classifier (e.g., isolation forest or recurrent network) that learns a user’s unique cognitive baseline, raising risk alerts relative to their standard behavior.
+3. **Federated Learning for Privacy**: Train local wellness models directly on consumer devices, aggregating only model gradients via federated learning to preserve absolute user telemetry privacy.
+4. **Cloud-Native Deployment**: Package the MCP servers and ADK orchestrator into containerized services (Docker/Kubernetes) with support for persistent state backends (Redis or Cloud Firestore), enabling the platform to scale to millions of concurrent active users.
